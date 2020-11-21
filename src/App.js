@@ -46,9 +46,9 @@ function App() {
         <option value='Computer Programmers'>Computer Programmers</option>
         <option value='Magicians'>Magicians</option>
       </select>
-      <Summary data={data.summary} />
-      <Trends data={data.trend_comparison} />
-      <Industries data={data.employing_industries} />
+      {data.summary && <Summary data={data.summary} />}
+      {data.trend_comparison && <Trends data={data.trend_comparison} />}
+      {data.employing_industries && <Industries data={data.employing_industries} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Labels({ labels, fontSize }) {
+export default function XLabels({ labels, fontSize }) {
   return (
     <>
       {labels.map((value, i) => {

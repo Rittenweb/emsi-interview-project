@@ -1,5 +1,5 @@
 :root {
-  --green: #67bf52;
+  --green: #5cc242;
   --red: #bf526d;
   --black: #555555;
   --grey: #eaeaea;
@@ -29,6 +29,51 @@
   color: white;
 }
 
+/*SUMMARY*/
+
+.summary {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.summary__section {
+  border-bottom: 2px solid var(--grey);
+  flex: 1;
+  padding: 40px 0;
+}
+
+.summary__section:first-child {
+  border-right: 2px solid var(--grey);
+}
+
+.summary__section:last-child {
+  border-left: 2px solid var(--grey);
+}
+
+.summary__figure {
+  font-weight: 500;
+  font-size: calc(1.4rem + 0.6vw);
+}
+
+.summary__unit {
+  font-weight: bold;
+  font-size: calc(0.7rem + 0.3vw);
+}
+
+.summary__aside {
+  font-size: calc(0.7rem + 0.3vw);
+}
+
+.summary__text--green {
+  color: var(--green);
+}
+
+.summary__text--red {
+  color: var(--red);
+}
+
+/*CHART*/
+
 .chart-line {
   animation: dash 8s linear forwards;
 }
@@ -39,11 +84,7 @@
   }
 }
 
-.labeltext {
-  /* font-size: 0.8rem; */
-}
-
-/*LEGEND*/
+/*TABLES: LEGEND AND INDUSTRIES*/
 
 .table__row {
   position: relative;

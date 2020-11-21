@@ -2,7 +2,8 @@ import React from 'react';
 
 //Components
 import VerticalDividers from './VerticalDividers';
-import Labels from './Labels';
+import YLabels from './YLabels';
+import XLabels from './XLabels';
 import XLabelUnit from './XLabelUnit';
 import YLabelUnit from './YLabelUnit';
 import YAxis from './YAxis';
@@ -110,16 +111,16 @@ export default function Chart({
     const value = (extremes.minY + step * i).toFixed(yPrecision || 1);
     const yRatio = getRatioOfDataSpan(extremes.minY, extremes.maxY, value);
     const y = getYCoordFromRatio(yRatio);
-    const x = (gutter / 3) * 2;
+    const x = gutter - gutter / 6;
     yLabels.push({ value, x, y });
   }
 
   return (
     <svg viewBox={`0 0 ${width + gutter * 2} ${height + gutter * 2}`} className='chart'>
       <VerticalDividers coordsArray={verticalDividerCoords} />
-      <Labels labels={xLabels} fontSize={fontSize} />
+      <XLabels labels={xLabels} fontSize={fontSize} />
       <XLabelUnit width={width} height={height} gutter={gutter} fontSize={fontSize} unit={xLabelUnit} />
-      <Labels labels={yLabels} fontSize={fontSize}></Labels>
+      <YLabels labels={yLabels} fontSize={fontSize}></YLabels>
       <YLabelUnit width={width} height={height} gutter={gutter} fontSize={fontSize} unit={yLabelUnit} />
       <YAxis height={height} gutter={gutter} />
       <DataLines data={polylineFittedData} nameColorMap={nameColorMap} lineLength={lineLength} />
