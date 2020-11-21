@@ -1,8 +1,8 @@
 import React from 'react';
-import Chart from './Chart.js';
+import Chart from './Chart';
 import Legend from './Legend';
 
-import mapRegionNamesToColors from './mapRegionNamesToColors.js';
+import mapRegionNamesToColors from './mapRegionNamesToColors';
 
 export default function Trends({ data }) {
   function mapTrendDataToChartPoints(numJobs, i, trendData) {

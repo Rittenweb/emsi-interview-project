@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Components
-import VerticalDividers from './VerticalDividers.js';
+import VerticalDividers from './VerticalDividers';
 import Labels from './Labels';
 import XLabelUnit from './XLabelUnit';
 import YLabelUnit from './YLabelUnit';
@@ -10,9 +10,9 @@ import DataLines from './DataLines';
 import DataPoints from './DataPoints';
 
 //Helper functions
-import getAllValues from './getAllValues.js';
-import getDataExtremes from './getDataExtremes.js';
-import getRatioOfDataSpan from './getRatioOfDataSpan.js';
+import getAllValues from './getAllValues';
+import getDataExtremes from './getDataExtremes';
+import getRatioOfDataSpan from './getRatioOfDataSpan';
 
 /*
 FORMAT OF DATA INPUT:

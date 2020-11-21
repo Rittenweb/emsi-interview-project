@@ -1,11 +1,11 @@
 //Currently supports up to 5 colors ... could obviously add more
 export default function mapRegionNamesToColors(regions) {
   let colorCache = {
-    0: '#142850',
-    1: '#2790C9',
-    2: '#ABDAFC',
-    3: '#7B77F5',
-    other: '#C1B5FF',
+    0: 'var(--navy)',
+    1: 'var(--blue)',
+    2: 'var(--lightblue)',
+    3: 'var(--purple)',
+    other: 'var(--pink)',
   };
   let map = {};
   regions.forEach((region, i) => {

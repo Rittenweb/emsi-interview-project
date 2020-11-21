@@ -1,6 +1,6 @@
 import React from 'react';
-import LegendRegion from './LegendRegion.js';
-import LegendHead from './LegendHead.js';
+import LegendRegion from './LegendRegion';
+import LegendHead from './LegendHead';
 
 /*
 FORMAT OF DATA INPUT:

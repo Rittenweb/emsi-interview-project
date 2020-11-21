@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 import Summary from './Summary';
-import Trends from './Trends.js';
+import Trends from './Trends';
 import Industries from './Industries';
 
 const fetchedOccupations = {};
