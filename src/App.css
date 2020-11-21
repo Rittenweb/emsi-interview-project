@@ -1,11 +1,15 @@
 :root {
   --green: #67bf52;
+  --red: #bf526d;
   --black: #555555;
   --grey: #eaeaea;
 }
 
 .App {
   text-align: center;
+  width: 90%;
+  margin: auto;
+  font-family: 'Calibri', sans-serif;
 }
 
 .App-header {
@@ -31,4 +35,43 @@
 
 .labeltext {
   /* font-size: 0.8rem; */
+}
+
+/*LEGEND*/
+
+.legend__region {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--grey);
+  font-size: calc(0.7rem + 0.3vw);
+}
+
+.legend__region--head {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.legend__flexcontainer {
+  display: flex;
+  align-items: center;
+}
+
+.legend__symbol {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin: 12px;
+}
+
+.legend__datacontainer {
+  width: 50%;
+  min-width: 200px;
+}
+
+.legend__data {
+  text-align: right;
+  width: 30%;
+  margin-right: 4px;
 }

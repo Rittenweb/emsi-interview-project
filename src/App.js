@@ -1,37 +1,23 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
-import Chart from './Chart.js';
+import Summary from './Summary';
+import Trends from './Trends.js';
+import Industries from './Industries';
+
+const fetchedOccupations = {};
 
 function App() {
-  const [chartData, setChartData] = useState([]);
+  const [data, setData] = useState({});
 
-  function fetchData(url) {
+  function fetchData(url, occupation) {
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        let trendComparison = data.trend_comparison;
-
-        function mapTrendDataToChartPoints(numJobs, i, trendData) {
-          //[x, y] are respectively: [data year, % change in jobs since previous year]
-          if (i === 0) {
-            return { x: trendComparison.start_year, y: 0 };
-          } else {
-            let initialNumJobs = trendData[0];
-            let percentChange = ((numJobs - initialNumJobs) / initialNumJobs) * 100;
-            return { x: trendComparison.start_year + i, y: percentChange };
-          }
-        }
-
-        //Map data to point format for each region
-        const newData = [];
-        newData.push({ name: 'region', points: trendComparison.regional.map(mapTrendDataToChartPoints) });
-        newData.push({ name: 'state', points: trendComparison.state.map(mapTrendDataToChartPoints) });
-        newData.push({ name: 'nation', points: trendComparison.nation.map(mapTrendDataToChartPoints) });
-
-        setChartData(newData);
+        fetchedOccupations[occupation] = data;
+        setData(data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -39,15 +25,18 @@ function App() {
   }
 
   function handleChange(e) {
-    if (e.target.value === 'Computer Programmers') {
-      fetchData('https://run.mocky.io/v3/a2cc3707-8691-4188-8413-6183a7bb3d32');
-    } else if (e.target.value === 'Magicians') {
-      fetchData('https://run.mocky.io/v3/de8028b1-0a35-45e7-8157-7cf56ef10ab0');
+    const occupation = e.target.value;
+    if (fetchedOccupations[occupation]) {
+      setData(fetchedOccupations[occupation]);
+    } else if (occupation === 'Computer Programmers') {
+      fetchData('https://run.mocky.io/v3/a2cc3707-8691-4188-8413-6183a7bb3d32', occupation);
+    } else if (occupation === 'Magicians') {
+      fetchData('https://run.mocky.io/v3/de8028b1-0a35-45e7-8157-7cf56ef10ab0', occupation);
     }
   }
 
   useEffect(() => {
-    fetchData('https://run.mocky.io/v3/a2cc3707-8691-4188-8413-6183a7bb3d32');
+    fetchData('https://run.mocky.io/v3/a2cc3707-8691-4188-8413-6183a7bb3d32', 'Computer Programmers');
   }, []);
 
   return (
@@ -57,17 +46,9 @@ function App() {
         <option value='Computer Programmers'>Computer Programmers</option>
         <option value='Magicians'>Magicians</option>
       </select>
-      {chartData.length && (
-        <Chart
-          width={900}
-          height={300}
-          gutter={60}
-          data={chartData}
-          numYLabels={6}
-          xLabelUnit={'Year'}
-          yLabelUnit={'Percent Change'}
-        />
-      )}
+      <Summary data={data.summary} />
+      <Trends data={data.trend_comparison} />
+      <Industries data={data.employing_industries} />
     </div>
   );
 }

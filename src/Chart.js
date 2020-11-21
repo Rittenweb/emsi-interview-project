@@ -12,16 +12,35 @@ import DataPoints from './DataPoints';
 //Helper functions
 import getAllValues from './getAllValues.js';
 import getDataExtremes from './getDataExtremes.js';
-import mapRegionNamesToColors from './mapRegionNamesToColors.js';
 import getRatioOfDataSpan from './getRatioOfDataSpan.js';
+
+/*
+FORMAT OF DATA INPUT:
+[
+  {
+    name: 'region name',
+    points: [{x, y}, {x, y} ...]
+  }
+  ...
+]
+*/
 
 //The gutter is tacked on independent of the graph's height/width, like box model margin, not padding
 //This is so that it's easier to shape the height/width ratio of the actual graph and data
-export default function Chart({ width, height, gutter, data, xLabelUnit, yLabelUnit, numYLabels, yPrecision }) {
+export default function Chart({
+  width,
+  height,
+  gutter,
+  data,
+  xLabelUnit,
+  yLabelUnit,
+  numYLabels,
+  yPrecision,
+  nameColorMap,
+}) {
   //Create some metadata which will make later math/methods shorter
   const [allXValues, allYValues] = getAllValues(data);
   const extremes = getDataExtremes(allXValues, allYValues);
-  const nameColorMap = mapRegionNamesToColors(data);
   //5 is just a magic number ... currently fits about right
   const fontSize = gutter / 5;
   //The below is imprecise, but tries to overshoot. The alternative is using refs to access the
@@ -96,9 +115,7 @@ export default function Chart({ width, height, gutter, data, xLabelUnit, yLabelU
   }
 
   return (
-    <svg
-      viewBox={`0 0 ${width + gutter * 2} ${height + gutter * 2}`}
-      style={{ border: '1px solid red', margin: '100px' }}>
+    <svg viewBox={`0 0 ${width + gutter * 2} ${height + gutter * 2}`} className='chart'>
       <VerticalDividers coordsArray={verticalDividerCoords} />
       <Labels labels={xLabels} fontSize={fontSize} />
       <XLabelUnit width={width} height={height} gutter={gutter} fontSize={fontSize} unit={xLabelUnit} />

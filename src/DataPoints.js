@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default function DataPoints({ data, nameColorMap, fontSize }) {
   return (
     <>
       {data.map((point, i) => {
         return (
-          <>
+          <Fragment key={i}>
             <circle
               fill='#FFFFFF'
               stroke='none'
@@ -24,7 +24,7 @@ export default function DataPoints({ data, nameColorMap, fontSize }) {
               key={i + 'small'}
               className='chart-line'
             />
-          </>
+          </Fragment>
         );
       })}
     </>
