@@ -3,6 +3,7 @@
   --red: #bf526d;
   --black: #555555;
   --grey: #eaeaea;
+  --darkgrey: #cfcfcf;
   --bluegrey: #eaf2f9;
   --navy: #142850;
   --blue: #2790c9;
@@ -14,19 +15,66 @@
 .App {
   text-align: center;
   width: 90%;
-  margin: auto;
+  margin: 5vw auto;
   font-family: 'Calibri', sans-serif;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  text-align: left;
+}
+
+.header__banner {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+}
+
+.header__pagetitle {
+  margin: 0;
+  font-size: calc(1.5rem + 0.6vw);
+}
+
+.header__subtitle {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-weight: normal;
+  font-size: calc(1rem + 0.5vw);
+}
+
+.header__selectlabel {
+  margin-right: 16px;
+  padding: 8px;
+  border-right: 2px solid var(--darkgrey);
+  border-bottom: 2px solid var(--darkgrey);
+}
+
+@media only screen and (max-width: 960px) {
+  .header__selectlabel {
+    display: none;
+  }
+}
+
+.header__select {
+  font-family: 'Calibri';
+  font-size: 1rem;
+  padding: 8px;
+  margin-right: 4vw;
+  border: 2px solid var(--darkgrey);
+  box-shadow: 4px 4px 0px var(--darkgrey);
+}
+
+.header__select:focus {
+  outline: none;
+  border-color: var(--black);
+}
+
+.blocktitle {
+  text-align: left;
+  border-bottom: 2px solid var(--grey);
+  font-size: 1.2rem;
+  margin-top: 50px;
+  margin-bottom: 0;
 }
 
 /*SUMMARY*/
@@ -92,7 +140,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 1px solid var(--darkgrey);
   font-size: calc(0.7rem + 0.3vw);
   text-align: left;
 }
