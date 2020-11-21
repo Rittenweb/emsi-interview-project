@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Emsi Interview Project
 
+![Screenshot1](src/assets/screenshot1.png)
+![Screenshot2](src/assets/screenshot2.png)
+
 ## Local Installation
 
 Clone the repository to your computer, then in its root directory run `npm install` and then `npm start`.

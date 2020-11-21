@@ -12,6 +12,8 @@
   --pink: #c1b5ff;
 }
 
+/* APPWIDE */
+
 .App {
   text-align: center;
   width: 90%;
@@ -19,6 +21,16 @@
   font-family: 'Calibri', sans-serif;
   box-sizing: border-box;
 }
+
+.blocktitle {
+  text-align: left;
+  border-bottom: 2px solid var(--grey);
+  font-size: 1.2rem;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+/* HEADER BLOCK */
 
 .header {
   text-align: left;
@@ -69,15 +81,7 @@
   border-color: var(--black);
 }
 
-.blocktitle {
-  text-align: left;
-  border-bottom: 2px solid var(--grey);
-  font-size: 1.2rem;
-  margin-top: 50px;
-  margin-bottom: 0;
-}
-
-/*SUMMARY*/
+/*SUMMARY BLOCK*/
 
 .summary {
   display: flex;
@@ -122,17 +126,13 @@
 
 /*CHART*/
 
-.chart-line {
-  animation: dash 8s linear forwards;
-}
-
 @keyframes dash {
   to {
     stroke-dashoffset: 0;
   }
 }
 
-/*TABLES: LEGEND AND INDUSTRIES*/
+/*TABLES: LEGEND AND INDUSTRY BLOCKS*/
 
 .table__row {
   position: relative;

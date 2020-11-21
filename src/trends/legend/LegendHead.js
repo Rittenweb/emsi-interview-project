@@ -4,7 +4,7 @@ export default function LegendHead({ start, end }) {
   return (
     <div className='table__row table__row--head'>
       <div className='table__flexcontainer'>
-        <div className='table__symbol' style={{ backgroundColor: '#FFFFFF' }}></div>
+        <div className='table__symbol'></div>
         <div>Region</div>
       </div>
       <div className='table__datacontainer table__flexcontainer'>

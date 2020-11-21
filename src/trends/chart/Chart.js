@@ -26,7 +26,7 @@ FORMAT OF DATA INPUT:
 ]
 */
 
-//The gutter is tacked on independent of the graph's height/width, like box model margin, not padding
+//The gutter is tacked on independent of the graph's height/width, like box model margin, not padding.
 //This is so that it's easier to shape the height/width ratio of the actual graph and data
 export default function Chart({
   width,
@@ -42,8 +42,6 @@ export default function Chart({
   //Create some metadata which will make later math/methods shorter
   const [allXValues, allYValues] = getAllValues(data);
   const extremes = getDataExtremes(allXValues, allYValues);
-  //5 is just a magic number ... currently fits about right
-  const fontSize = gutter / 5;
   //The below is imprecise, but tries to overshoot. The alternative is using refs to access the
   //polyline element and call its getTotalLength() method, which is inherited from SVGGeometryElement
   const lineLength = Math.sqrt(height * height + width * width) * 4;
@@ -111,20 +109,20 @@ export default function Chart({
     const value = (extremes.minY + step * i).toFixed(yPrecision || 1);
     const yRatio = getRatioOfDataSpan(extremes.minY, extremes.maxY, value);
     const y = getYCoordFromRatio(yRatio);
-    const x = gutter - gutter / 6;
+    const x = gutter - gutter / 8;
     yLabels.push({ value, x, y });
   }
 
   return (
     <svg viewBox={`0 0 ${width + gutter * 2} ${height + gutter * 2}`} className='chart'>
       <VerticalDividers coordsArray={verticalDividerCoords} />
-      <XLabels labels={xLabels} fontSize={fontSize} />
-      <XLabelUnit width={width} height={height} gutter={gutter} fontSize={fontSize} unit={xLabelUnit} />
-      <YLabels labels={yLabels} fontSize={fontSize}></YLabels>
-      <YLabelUnit width={width} height={height} gutter={gutter} fontSize={fontSize} unit={yLabelUnit} />
+      <XLabels labels={xLabels} width={width} />
+      <XLabelUnit width={width} height={height} gutter={gutter} unit={xLabelUnit} />
+      <YLabels labels={yLabels} width={width}></YLabels>
+      <YLabelUnit width={width} height={height} gutter={gutter} unit={yLabelUnit} />
       <YAxis height={height} gutter={gutter} />
       <DataLines data={polylineFittedData} nameColorMap={nameColorMap} lineLength={lineLength} />
-      <DataPoints data={circleFittedData} nameColorMap={nameColorMap} fontSize={fontSize} />
+      <DataPoints data={circleFittedData} nameColorMap={nameColorMap} width={width} />
     </svg>
   );
 }

@@ -6,6 +6,11 @@ import Earnings from './Earnings';
 export default function Summary({ data, occupation }) {
   const [jobs, jobsGrowth, earnings] = [data.jobs, data.jobs_growth, data.earnings];
 
+  //Instead of a different component for each of three job sections below, we could
+  //create the html of each of their textfields (including colored spans, etc) in this
+  //component, then pass those symmetrically down into three copies of one component,
+  //and dangerouslySetInnerHTML in that component. The tradeoffs are minor.
+
   return (
     <>
       <h2 className='blocktitle'>Occupation Summary for {occupation}</h2>

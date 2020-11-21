@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function XLabels({ labels, fontSize }) {
+export default function YLabels({ labels, width }) {
   return (
     <>
       {labels.map((value, i) => {
@@ -8,10 +8,9 @@ export default function XLabels({ labels, fontSize }) {
           <text
             x={value.x}
             y={value.y}
-            textAnchor='middle'
-            className='labeltext'
-            key={i}
-            style={{ fontSize: fontSize + 'px' }}>
+            textAnchor='end'
+            style={{ fontSize: `calc(20px - 1vw + ${width / 150}px)` }}
+            key={i}>
             {value.value}
           </text>
         );

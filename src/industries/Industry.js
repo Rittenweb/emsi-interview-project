@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from './building-regular.svg';
+import icon from '../assets/building-regular.svg';
 
 export default function Industry({ totalJobs, data }) {
   const changePercent = ((data.in_occupation_jobs / totalJobs) * 100).toFixed(1) + '%';

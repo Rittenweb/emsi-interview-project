@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
-export default function DataPoints({ data, nameColorMap, fontSize }) {
+//Width is used as a general magnitude measure of SVG pixel values
+export default function DataPoints({ data, nameColorMap, width }) {
   return (
     <>
       {data.map((point, i) => {
@@ -11,7 +12,7 @@ export default function DataPoints({ data, nameColorMap, fontSize }) {
               stroke='none'
               cx={point.x}
               cy={point.y}
-              r={fontSize / 2}
+              r={width / 200}
               key={i + 'big'}
               className='chart-line'
             />
@@ -20,7 +21,7 @@ export default function DataPoints({ data, nameColorMap, fontSize }) {
               stroke='none'
               cx={point.x}
               cy={point.y}
-              r={fontSize / 3}
+              r={width / 300}
               key={i + 'small'}
               className='chart-line'
             />

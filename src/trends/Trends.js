@@ -1,6 +1,6 @@
 import React from 'react';
-import Chart from './Chart';
-import Legend from './Legend';
+import Chart from './chart/Chart';
+import Legend from './legend/Legend';
 
 import mapRegionNamesToColors from './mapRegionNamesToColors';
 
